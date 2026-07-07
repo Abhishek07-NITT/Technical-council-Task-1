@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insider NITT - System Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-wrapper">
+            <div class="auth-brand">
+                <span class="logo">Insider NITT</span>
+                <span class="version">SECURE ACCESS GATEWAY</span>
+            </div>
+            
+            <div class="auth-tabs">
+                <button id="tab-login" class="auth-tab active">SYSTEM LOGIN</button>
+                <button id="tab-register" class="auth-tab">NEW REGISTRATION</button>
+            </div>
+
+            <form id="auth-login-form" class="brutalist-form auth-form-content active">
+                <input type="email" id="login-email" placeholder="EMAIL ID" class="brutalist-input" required>
+                <input type="password" id="login-password" placeholder="PASSWORD" class="brutalist-input" required>
+                <button type="submit" class="brutalist-btn invert-btn">INITIALIZE SESSION</button>
+            </form>
+
+            <form id="auth-register-form" class="brutalist-form auth-form-content">
+                <input type="text" id="reg-name" placeholder="FULL NAME" class="brutalist-input" required>
+                <input type="email" id="reg-email" placeholder="EMAIL ID" class="brutalist-input" required>
+                <input type="password" id="reg-password" placeholder="PASSWORD" class="brutalist-input" required>
+                
+                <div class="form-row status-calc-row">
+                    <select id="reg-grad-year" class="brutalist-input" required>
+                        <option value="" disabled selected>SELECT GRADUATION YEAR</option>
+                        <option value="2030">2030</option>
+                        <option value="2029">2029</option>
+                        <option value="2028">2028</option>
+                        <option value="2027">2027</option>
+                    </select>
+                    <div id="calculated-status-badge" class="status-preview-box">STATUS: UNKNOWN</div>
+                </div>
+                
+                <button type="submit" class="brutalist-btn invert-btn">CREATE ARCHIVE ACCOUNT</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="app-container">
+        
+        <header class="app-header">
+            <div class="brand-box">
+                <span class="logo">Insider NITT</span>
+                <span class="version">REPOSITORY V1.0.4</span>
+            </div>
+            <div class="header-metrics">
+                
+                <div class="notif-dropdown-wrapper">
+                    <button id="btn-notifications-toggle" class="logout-btn notif-bell-btn" aria-label="Notifications Center">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        <span id="notif-badge-count" class="alert-badge" style="display:none;">0</span>
+                    </button>
+                    <div id="notif-drop-panel" class="notif-floating-panel">
+                        <div class="notif-panel-header">ALERTS LEDGER LOGS</div>
+                        <div id="notif-items-container" class="notif-list-scroller">
+                            <div class="empty-notif-row">NO NEW ALERTS UNREAD INSIDE PIPELINE TRACKS.</div>
+                        </div>
+                        <button id="btn-clear-alerts" class="brutalist-btn clear-alerts-action-btn">DISMISS ALL LOG ENTRIES</button>
+                    </div>
+                </div>
+
+                <div class="user-profile">
+                    <span class="terminal-icon">&gt;_</span>
+                    <span class="username" id="display-username">GUEST [UNAUTHORIZED]</span>
+                </div>
+                
+                <button id="btn-system-logout" class="logout-btn" aria-label="Exit System">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="workspace">
+            
+            <aside class="sidebar">
+                <div class="nav-group">
+                    <div class="nav-header">NAVIGATION</div>
+                    <button class="nav-item active" data-target="dashboard-view">DASHBOARD</button>
+                    <button class="nav-item" data-target="experiences-view">EXPERIENCES</button>
+                    <button class="nav-item" data-target="mock-view">MOCK INTERVIEW</button>
+                </div>
+                
+                <button id="sidebar-record-btn" class="record-trigger-btn" data-target="record-view">
+                    <span class="record-dot"></span> RECORD EXPERIENCE
+                </button>
+            </aside>
+
+            <main class="content-panel">
+                <div class="panel-sub-header">
+                    <span id="current-view-title">SYSTEM DASHBOARD</span>
+                    <span class="system-status">STATUS: <span class="green-text">ONLINE</span></span>
+                </div>
+
+                <div class="view-viewport">
+                    
+                    <div id="dashboard-view" class="view-content dynamic-grid active">
+                        <div class="dashboard-box global-stats">
+                            <div class="box-header">GLOBAL STATS</div>
+                            <div class="stat-line">
+                                <span>TOTAL EXPERIENCES</span>
+                                <span class="stat-count" id="total-exp-count">0</span>
+                            </div>
+                            <div class="stat-line">
+                                <span>INTERVIEWS HAPPENED</span>
+                                <span class="stat-count" id="total-mock-count">0</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-box recent-activity">
+                            <div class="box-header">RECENT ACTIVITY</div>
+                            <div class="activity-stream" id="activity-log">
+                                <p class="loading-text">Activity stream initializing...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="experiences-view" class="view-content stack-layout">
+                        <div class="dashboard-box horizontal-search-console">
+                            <div class="search-flex-container">
+                                <input type="text" id="search-input" placeholder="SEARCH EXPERIENCES BY TECH STACK, APP TYPE, KEYWORD, OR COMPANY..." class="brutalist-input text-search-field">
+                                <select id="filter-type-select" class="brutalist-input dropdown-select-field">
+                                    <option value="all">ALL STORIES</option>
+                                    <option value="interview">INTERVIEWS</option>
+                                    <option value="project">PROJECTS</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-box data-results data-results-expanded">
+                            <div class="box-header">ARCHIVED KNOWLEDGE PIECES</div>
+                            <div class="records-container" id="records-list"></div>
+                        </div>
+                    </div>
+
+                    <div id="mock-view" class="view-content horizontal-layout">
+                        <div class="dashboard-box marketplace-form-box">
+                            <div class="box-header">POST SCHEDULE AVAILABILITY / REQUEST</div>
+                            <form id="mock-marketplace-form" class="brutalist-form">
+                                <select id="mock-role" class="brutalist-input" required>
+                                    <option value="" disabled selected>SELECT WORKFLOW INTERACTION ACTION</option>
+                                    <option value="REQUESTING">REQUESTING AN INTERVIEW (CANDIDATE)</option>
+                                    <option value="HOSTING">FREE TO TAKE INTERVIEWS (INTERVIEWER)</option>
+                                </select>
+                                <input type="text" id="mock-topic" placeholder="TOPIC / TECH STACK (e.g., SYSTEM DESIGN)" class="brutalist-input" required>
+                                <input type="text" id="mock-time" placeholder="AVAILABLE TIME WINDOW (e.g., MON 4PM)" class="brutalist-input" required>
+                                <button type="submit" class="brutalist-btn">BROADCAST ENTRY TO FORUM BOARD</button>
+                            </form>
+                        </div>
+                        
+                        <div class="dashboard-box marketplace-board">
+                            <div class="box-header">LIVE MOCK REQUESTS & OPEN SLOTS</div>
+                            
+                            <div class="mock-horizontal-toggle-bar">
+                                <button id="subtab-slots" class="sub-toggle-btn active">AVAILABLE SLOTS (INTERVIEWERS)</button>
+                                <button id="subtab-requests" class="sub-toggle-btn">INTERVIEW REQUESTS (CANDIDATES)</button>
+                            </div>
+
+                            <div class="market-listings" id="market-listings-container"></div>
+                        </div>
+                    </div>
+
+                    <div id="record-view" class="view-content record-split-grid">
+                        <div class="dashboard-box record-control-panel">
+                            <div class="box-header">VOICE ARCHIVE INTERFACE // CAPTURE CONFIGURATION</div>
+                            
+                            <div class="voice-deck">
+                                <div class="deck-status-line">
+                                    <span>RECORDER STATUS: <span id="recording-status" style="color: #666;">IDLE</span></span>
+                                    <span id="recording-timer">00:00</span>
+                                </div>
+                                <div class="voice-controls-grid">
+                                    <button type="button" id="btn-record" class="brutalist-btn"><span class="record-dot"></span> START RECORDING</button>
+                                    <button type="button" id="btn-pause" class="brutalist-btn" disabled>PAUSE</button>
+                                    <button type="button" id="btn-replay" class="brutalist-btn" disabled>REPLAY</button>
+                                </div>
+                           su     <audio id="audio-playback" style="display:none;"></audio>
+                            </div>
+
+                            <div class="brutalist-form" style="margin-top: 20px;">
+                                <div class="vertical-input-stack">
+                                    <select id="entry-type" class="brutalist-input" style="margin-bottom: 15px;" required>
+                                        <option value="interview">INTERVIEW EXPERIENCE RECORD</option>
+                                        <option value="project">PROJECT DEVELOPMENT STORY</option>
+                                    </select>
+                                    <input type="text" id="entry-title" placeholder="DOCUMENT TITLE" class="brutalist-input" required>
+                                </div>
+
+                                <button type="button" id="btn-transmit-audio" class="brutalist-btn invert-btn" style="width: 100%; margin-top: 20px;" disabled>TRANSMIT & PROCESS AUDIO</button>
+                                <button type="button" id="btn-direct-commit" class="brutalist-btn commit-green-btn" style="width: 100%; margin-top: 10px;">COMMIT TO REPOSITORY</button>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-box record-writer-panel">
+                            <div class="box-header">LIVE DOCUMENT DESK INTERFACE // EDITABLE VISUAL CANVAS</div>
+                            <div class="writer-container-wrapper">
+                                <textarea id="entry-content" placeholder="Place your cursor anywhere inside this blank document sheet to start writing manually, or utilize the voice transmission engine panel to generate an AI transcription template structure..." class="brutalist-input live-workspace-textarea"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
