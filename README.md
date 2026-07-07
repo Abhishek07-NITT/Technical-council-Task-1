@@ -8,35 +8,25 @@ The application utilizes a multi-modal AI voice compilation engine, vector embed
 
 ## Core Functional Features
 
-### 1. Isolated Secure Access Gateway
-* **Registration and Login:** Features a neat, visually isolated login vs. registration toggle portal interface that defaults safely to credential validation screens.
-* **Cryptographic Security:** Cleartext passwords are securely processed via native `hashlib` PBKDF2-HMAC-SHA256 hashing loops before database persistence operations.
-* **Dynamic Year Calculations:** Selecting a graduation year automatically evaluates and maps an operator's academic status tier labels (`FRESHER`, `SOPHOMORE`, `PREFINAL YEAR`, `FINAL YEAR`).
+### 1. Clean Auth & Session Lock
+* **Isolated UI Portal:** A clean toggle that completely isolates forms, showing only login or registration fields and defaulting to login.
+* **PBKDF2 Security:** Cleartext credentials run through safe PBKDF2-HMAC-SHA256 hashing loops before hitting database rows.
+* **Persistent Sessions:** Saves unique tracking token hex keys to your browser cache to completely stop accidental logouts.
 
-### 2. Database-Backed Session Token Verification
-* **Accidental Logout Resolution:** Eliminates session dropped states by saving unique tracking token hex keys inside the browser's local cache alongside matching database columns.
-* **Validation Middleware:** Automated token tracing verify routines crosscheck user profile variables during startup and active Single Page Application (SPA) view rotations.
+### 2. Split Workspace Editor
+* **Manual Typing Canvas:** Left panel handles inputs and recording triggers while the right side is an unlocked, live-editable typing desk.
+* **Decoupled Processing:** Transcribes microphone recordings to markdown using `gemini-2.5-flash` without auto-saving or clearing your current text.
+* **SQLite Commits:** The green commit button calculates vector embedding coordinates and permanently writes the log to disk.
 
-### 3. Split-Screen Document Desk Interface
-* **True Split Window Execution:** The screen layout isolates operations. The left panel manages voice recordings and meta variables; the right panel features a completely unlocked, live-editable canvas tracking manual text updates.
-* **Decoupled Action Pipelines:** Includes two completely separate button execution pathways:
-  * **Transmit & Process Audio:** Streams raw multi-part in-memory webm audio bytes directly to `gemini-2.5-flash` to transcribe and format clean markdown text document templates.
-  * **Commit to Repository:** Evaluates text parameters inside the writing workspace canvas and fires vector index insertions to index the entry under the global ledger database.
+### 3. Experiences Explorer (RAG Search)
+* **Horizontal Top Bar:** Replaces crowded side panels with a clean horizontal search console and an `ALL`/`INTERVIEWS`/`PROJECTS` dropdown selector.
+* **Asymmetric Embeddings:** Indexes your records using the modern, native `gemini-embedding-2` vector layout configurations.
+* **AI Context Synthesis:** Compares vector dot-products in-memory to print a condensed **AI Insight** summary brief right above search results.
 
-### 4. Experiences Explorer (Direct Semantic RAG Search)
-* **Asymmetric Coordinate Mapping:** Converts document strings to vector matrices using the modern `gemini-embedding-2` model configuration layout.
-* **Top-Bar Control Console:** Replaces legacy sidebar elements with a horizontal, clean top-bar text search field paired with localized category selectors (`ALL STORIES`, `INTERVIEWS`, `PROJECTS`).
-* **AI Knowledge Synthesis:** Generates a real-time semantic synthesis brief box at the peak of search result frames by calculating mathematical vector dot-product similarity scores in-memory.
-
-### 5. Mock Interviews Availability Forum
-* **Filterable Category Sub-Tabs:** Explicitly segregates matching schedules into two filterable horizontal sub-tab lists:
-  * **Available Slots:** Posted by student interviewers ready to conduct evaluations.
-  * **Interview Requests:** Posted by candidate targets seeking mock assessments.
-* **Interactive Peer Acceptance:** Operators can directly lock a listing row on the board and transmit peer message strings directly to the author.
-
-### 6. Notifications Alerts Ledger Center
-* **Drawer Notification Hub:** Integrates an asynchronous notification icon indicator badge directly within the platform's topmost header.
-* **Direct Notification Dispatch:** Displays unread message threads from peer mock commitments directly within a floating panel scroller module, completely decoupled from gamified metric distractions.
+### 4. Mock Interviews & Live Alerts
+* **Dual Filter Tabs:** Separates the mock board into dedicated horizontal sub-tabs for **Available Slots** (interviewers) and **Interview Requests**.
+* **Lock & Connect:** Claim a peer's slot, attach a custom contact message (like a Discord handle), and lock the database row instantly.
+* **Notification Center:** Functional, polling alert bell that flashes a real-time badge for fresh peer messages.
 
 ---
 
