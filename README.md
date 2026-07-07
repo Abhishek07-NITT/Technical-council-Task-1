@@ -34,8 +34,12 @@ The application utilizes a multi-modal AI voice compilation engine, vector embed
 
 Ensure you have the following environments configured locally before launching the engine sequence:
 
-1. **Python Runtime Engine:** Python `3.10` installed and FastAPI .
+1. **Python Runtime Engine:** Python `3.10` installed.
 2. **Web Browser Support:** Modern Chromium-based context engines (Google Chrome, Microsoft Edge, Brave) supporting native `getUserMedia` microphone API stream bindings.
 3. **Google AI Studio Key:** An active access API token from Google AI Studio to access `gemini-2.5-flash` and `gemini-embedding-2` architectures.
 
 ---
+
+## Installation requisites
+
+1. Install Fastapi , google-genai
