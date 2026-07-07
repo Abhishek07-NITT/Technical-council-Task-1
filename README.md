@@ -40,7 +40,3 @@ Ensure you have the following environments configured locally before launching t
 4. **Install These** Install 'Fastapi' , 'google-genai'
 
 ---
-
-## Installation requisites
-
-1. Install Fastapi , google-genai
